@@ -17,11 +17,11 @@ function NavBar(props) {
         <div>
           <span className="mr-2 text-white">{auth0Client.getProfile().name}</span>
           <div className="btn btn-dark" onClick={() => {signOut()}}>Sign Out</div>
+          <div className="btn btn-dark">{JSON.stringify(auth0Client.getProfile())}</div>
         </div>
         )
       }
     </nav>
   );
 }
-auth0Client.signIn();
 export default NavBar;

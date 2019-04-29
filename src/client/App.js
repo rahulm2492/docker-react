@@ -1,23 +1,32 @@
 import React, { Component } from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Navbar from './Navbar';
+import ShowData from './showData';
 import './app.css';
-import ReactImage from './react.png';
 
 export default class App extends Component {
-  state = { username: null };
+  state = { user: null };
 
   componentDidMount() {
     fetch('/api/getUsername')
       .then(res => res.json())
-      .then(user => this.setState({ username: user.username }));
+      .then(user => this.setState({ user: JSON.parse(user.userDetails) }));
   }
 
   render() {
-    const { username } = this.state;
+    const { user } = this.state;
     return (
       <div>
-        {username ? <h1>{`Hello ${username}`}</h1> : <h1>Loading.. please wait!</h1>}
-        <Navbar />
+        {user ? <h1>{`hello ${user.username}`}</h1> : <h1>Loading.. please wait!</h1>}
+        <BrowserRouter>
+          <Switch>
+            <Route exact path="/" component={Navbar} />
+            <Route
+              path="/callback"
+              render={props => <ShowData {...props} />}
+            />
+          </Switch>
+        </BrowserRouter>
       </div>
     );
   }

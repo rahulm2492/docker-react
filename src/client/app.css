@@ -6,3 +6,50 @@ body {
   text-align: center;
   margin: auto;
 }
+
+.beach-list {
+  float: left;
+  width: 100px;
+  height: 100px;
+  border: 1px solid lightseagreen;
+  margin-right: 10px;
+}
+.beach-list>h5{
+  margin: 0;
+  height: 100px;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.beach-list:hover {
+  cursor: pointer;
+}
+
+
+
+.beach-list-wrapper{
+  list-style-type: none;
+  float: left;
+}
+
+.beach-display {
+  float: left;
+}
+.left-block {
+  float: left;
+}
+.right-block {
+  float: right;
+}
+.right-block ul {
+  list-style-type: none;
+}
+.right-block img {
+  margin: 0 auto;
+  display: block;
+}
+.right-block li {
+  text-align: left;
+}
+
+ 

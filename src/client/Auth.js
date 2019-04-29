@@ -8,9 +8,13 @@ class Auth {
       // audience: 'https://rahulm2492.eu.auth0.com/userinfo',
       clientID: 'BfwRIMHwxUVHbgOMidST84zBM7PyXAF1',
       // redirectUri: 'http://localhost:3000',
-      responseType: 'id_token',
+      redirectUri: `${window.location.origin}/callback`,
+      responseType: 'token id_token',
+      scope: 'openid profile',
       // scope: 'openid profile'
       sso: false,
+      cross_origin_auth: true,
+      sso_disabled: true,
     });
 
     this.getProfile = this.getProfile.bind(this);
@@ -49,7 +53,7 @@ class Auth {
         this.expiresAt = authResult.idTokenPayload.exp * 1000;
         resolve();
       });
-    })
+    });
   }
 
   signOut() {
